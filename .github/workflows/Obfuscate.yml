@@ -1,7 +1,5 @@
 # Build Obfuscate BPB Panel（手动混淆版）
 
-这是一个 GitHub Actions 工作流配置文件，用于构建和混淆 BPB Panel 的 JavaScript 文件。以下是手动修改后的版本，添加了无意义变量和混淆操作。
-
 ## 修改后的工作流内容
 
 ```yaml
