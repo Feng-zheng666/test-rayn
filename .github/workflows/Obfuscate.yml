@@ -32,10 +32,6 @@ jobs:
         run: |
           wget -O origin.js https://raw.githubusercontent.com/bia-pain-bache/BPB-Worker-Panel/main/build/unobfuscated-worker.js
 
-      - name: 添加初始化变量以尝试规避 CPU 限制
-        run: |
-          echo "let meaninglessVar1 = 'init'; const pointlessConst = 123; var dummyFlag = false;" | cat - origin.js > temp_origin.js && mv temp_origin.js origin.js
-
       - name: 混淆 BPB worker.js
         run: |
           javascript-obfuscator origin.js --output _worker.js \
@@ -56,4 +52,4 @@ jobs:
           branch: main
           commit_message: ':arrow_up: 更新最新的 BPB 面板'
           commit_author: 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'
-          push_options: '--set-upstream'
+          push_options: '--set-upstream' 
