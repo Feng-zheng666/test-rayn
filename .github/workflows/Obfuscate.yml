@@ -16,23 +16,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 检出代码
+      # Step 1: 检出代码
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: 设置 Node.js 环境
+      # Step 2: 设置 Node.js 环境
+      - name: Setup Node.js Environment
         uses: actions/setup-node@v4
         with:
           node-version: "latest"
 
-      - name: 安装依赖项
+      # Step 3: 全局安装依赖项
+      - name: Install Dependencies
         run: |
           npm install -g javascript-obfuscator
 
-      - name: 下载 BPB worker.js
+      # Step 4: 下载 BPB worker.js 文件
+      - name: Download BPB worker.js
         run: |
           wget -O origin.js https://raw.githubusercontent.com/bia-pain-bache/BPB-Worker-Panel/main/build/unobfuscated-worker.js
 
-      - name: 混淆 BPB worker.js
+      # Step 5: 混淆 BPB worker.js
+      - name: Obfuscate BPB worker.js
         run: |
           javascript-obfuscator origin.js --output _worker.js \
             --compact true \
@@ -46,7 +51,8 @@ jobs:
             --transform-object-keys true \
             --unicode-escape-sequence true
 
-      - name: 提交更改
+      # Step 6: 提交更改到仓库
+      - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: main
