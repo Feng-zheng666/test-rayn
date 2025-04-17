@@ -32,12 +32,6 @@ jobs:
         run: |
           wget -O origin.js https://raw.githubusercontent.com/bia-pain-bache/BPB-Worker-Panel/main/build/unobfuscated-worker.js
 
-      - name: 检查 origin.js 内容
-        run: |
-          ls -l origin.js
-          head origin.js 
-          # 或者 cat origin.js，但如果文件很大，日志会很长
-
       - name: 混淆 BPB worker.js
         run: |
           javascript-obfuscator origin.js --output _worker.js \
@@ -58,4 +52,4 @@ jobs:
           branch: main
           commit_message: ':arrow_up: 更新最新的 BPB 面板'
           commit_author: 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'
-          push_options: '--set-upstream' 
+          push_options: '--set-upstream'
